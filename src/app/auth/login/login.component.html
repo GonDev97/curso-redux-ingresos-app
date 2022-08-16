@@ -29,7 +29,10 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary submit-btn btn-block">Login</button>
+                  <button *ngIf="!loading" type="submit" [disabled]="loginForm.invalid" class="btn btn-primary submit-btn btn-block">Login</button>
+                </div>
+                <div class="form-group">
+                  <button *ngIf="loading" type="button" [disabled]="true" class="btn btn-primary submit-btn btn-block"><i class="fa fa-spin fa-sync"></i>Loading...</button>
                 </div>
                 
                 
