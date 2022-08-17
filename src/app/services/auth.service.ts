@@ -27,9 +27,7 @@ export class AuthService {
 
   initAuthLister(){
     this.auth.authState.subscribe(firebaseUser => {
-      //console.log(firebaseUser?.getIdToken());
       if(firebaseUser){
-        console.log(firebaseUser);
         this.firebaseUserSubscription = this.fireStore.doc(`${firebaseUser.uid}/usuario`).valueChanges()
         .subscribe((storeFirebaseUser) => {
           this.user_ = User.fromFirebase(storeFirebaseUser)
@@ -43,6 +41,7 @@ export class AuthService {
         this.user_ = undefined;
         this.firebaseUserSubscription?.unsubscribe();
         this.store.dispatch(unSetUser())
+        this.store.dispatch(unSetItems())
       }
 
     })

@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
 
     this.uiSubscription = this.store.select('ui').subscribe(ui => {
       this.loading = ui.isLoading
-      console.log(this.loading);
     })
 
   }
@@ -54,7 +53,6 @@ export class RegisterComponent implements OnInit {
     .then(credentials => {
       this.store.dispatch(stopLoading());
       this.router.navigate(['/']);
-      console.log(credentials);
     })
     .catch(error => {
       this.store.dispatch(stopLoading());
