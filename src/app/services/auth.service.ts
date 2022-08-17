@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { map, Subscription } from 'rxjs';
 import { AppState } from '../app.reducer';
 import { setUser, unSetUser } from '../auth/auth.actions';
+import { unSetItems } from '../ingreso-egreso/ingreso-egreso.actions';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -13,25 +14,33 @@ import { User } from '../models/user.model';
 export class AuthService {
   
   private firebaseUserSubscription: Subscription | undefined;
+  private  user_: User | undefined;
 
   constructor(public auth:AngularFireAuth,
     public fireStore: AngularFirestore,
     private store: Store<AppState>) { }
 
 
+  get user(){
+    return {...this.user_}
+  }
+
   initAuthLister(){
     this.auth.authState.subscribe(firebaseUser => {
       //console.log(firebaseUser?.getIdToken());
       if(firebaseUser){
         console.log(firebaseUser);
-        this.firebaseUserSubscription = this.fireStore.doc(`${firebaseUser.uid}/usuario`).valueChanges().subscribe((storeFirebaseUser) => {
-        
-        this.store.dispatch(setUser({user: User.fromFirebase(storeFirebaseUser)}))
+        this.firebaseUserSubscription = this.fireStore.doc(`${firebaseUser.uid}/usuario`).valueChanges()
+        .subscribe((storeFirebaseUser) => {
+          this.user_ = User.fromFirebase(storeFirebaseUser)
+          this.store.dispatch(setUser({user: this.user_}))
+          this.store.dispatch(unSetItems())
       })
 
         
         // this.store.dispatch(setUser({}))
       } else{
+        this.user_ = undefined;
         this.firebaseUserSubscription?.unsubscribe();
         this.store.dispatch(unSetUser())
       }
