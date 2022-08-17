@@ -18,7 +18,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="label">Password</label>
+                  <label class="label">Contraseña</label>
                   <div class="input-group">
                     <input formControlName="password" type="password" class="form-control" placeholder="*********">
                     <div class="input-group-append">
@@ -32,14 +32,14 @@
                   <button *ngIf="!loading" type="submit" [disabled]="loginForm.invalid" class="btn btn-primary submit-btn btn-block">Login</button>
                 </div>
                 <div class="form-group">
-                  <button *ngIf="loading" type="button" [disabled]="true" class="btn btn-primary submit-btn btn-block"><i class="fa fa-spin fa-sync"></i>Loading...</button>
+                  <button *ngIf="loading" type="button" [disabled]="true" class="btn btn-primary submit-btn btn-block"><i class="fa fa-spin fa-sync"></i>Cargando...</button>
                 </div>
                 
                 
                 <div class="text-block text-center my-3">
-                  <span class="text-small font-weight-semibold">Are you not registered? </span>
+                  <span class="text-small font-weight-semibold">No estás registrado? </span>
                   <br>
-                  <a routerLink="/register" class="text-black text-small">Create an account</a>
+                  <a routerLink="/register" class="text-black text-small">Crea una cuenta</a>
                 </div>
               </form>
             </div>

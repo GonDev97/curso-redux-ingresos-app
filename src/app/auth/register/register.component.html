@@ -8,7 +8,7 @@
             <form [formGroup]="registerForm" (ngSubmit)="crearUsuario()" action="#">
               <div class="form-group">
                 <div class="input-group">
-                  <input  formControlName="name" type="text" class="form-control" placeholder="Name">
+                  <input  formControlName="name" type="text" class="form-control" placeholder="Nombre">
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i *ngIf="registerForm.get('name')?.valid" class="fa fa-check-circle"></i>
@@ -28,7 +28,7 @@
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <input formControlName="password" type="password" class="form-control" placeholder="Password">
+                  <input formControlName="password" type="password" class="form-control" placeholder="Contraseña">
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i *ngIf="registerForm.get('password')?.valid" class="fa fa-check-circle"></i>
@@ -44,9 +44,9 @@
                 </div>
               </div>
               <div class="text-block text-center my-3">
-                <span class="text-small font-weight-semibold">Have you already an account?</span>
+                <span class="text-small font-weight-semibold">Ya tienes una cuenta?</span>
                 <br>
-                <a routerLink="/login" class="text-black text-small">Login</a>
+                <a routerLink="/login" class="text-black text-small">Iniciar sesión</a>
               </div>
             </form>
           </div>

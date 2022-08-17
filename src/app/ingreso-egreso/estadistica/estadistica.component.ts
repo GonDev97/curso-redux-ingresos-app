@@ -54,7 +54,13 @@ export class EstadisticaComponent implements OnInit {
         this.egresos++;
       }
     }
-    this.doughnutChartData.datasets= [{data: [this.totalIngresos, this.totalEgresos]}]
+    this.doughnutChartData = {
+      labels: ['Ingresos', 'Egresos'],
+      datasets: [
+        { data: [this.totalIngresos, this.totalEgresos] },
+      ]
+    };
+    // this.doughnutChartData.datasets= [{data: [this.totalIngresos, this.totalEgresos]}]
   }
 
 }
